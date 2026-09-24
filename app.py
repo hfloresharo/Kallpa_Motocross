@@ -75,7 +75,7 @@ button{background:#ffcf00;border:0;border-radius:10px;padding:10px 18px;font-wei
 const c=document.getElementById("game"),ctx=c.getContext("2d");
 const W=c.width,H=c.height,ground=500;
 let running=false,paused=false,score=0,best=Number(localStorage.kallpaBest||0);
-let speed=7,frame=0,world=0,angle=0;
+let speed=3,frame=0,world=0,angle=0;
 const keys={left:false,right:false};
 const bike={x:210,y:450,vy:0,rot:0,onGround:true};
 let obstacles=[];
@@ -83,7 +83,7 @@ let obstacles=[];
 document.getElementById("best").textContent=best;
 function resize(){ /* canvas scales with CSS */ }
 function reset(){
- score=0; frame=0; world=0; speed=7; angle=0;
+ score=0; frame=0; world=0; speed=3; angle=0;
  bike.x=210;bike.y=ground-48;bike.vy=0;bike.rot=0;bike.onGround=true;
  obstacles=[];
  for(let i=0;i<7;i++) addObstacle(720+i*260);
@@ -165,7 +165,7 @@ function loop(){
  if(!running)return;
  if(!paused){
    frame++;world+=speed;
-   speed=Math.min(13,7+score/180);
+   speed=Math.min(5.5,3.5+score/500);
    bike.vy+=0.72;bike.y+=bike.vy;
    bike.onGround=false;
    if(bike.y>=ground-48){bike.y=ground-48;bike.vy=0;bike.onGround=true}
